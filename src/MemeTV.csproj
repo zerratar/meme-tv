@@ -1,0 +1,132 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\data\templates\clip1.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip10.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip102.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip103.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip104.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip105.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip106.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip107.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip108.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip109.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip11.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip110.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip111.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip112.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip113.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip114.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip115.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip116.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip117.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip118.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip119.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip12.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip120.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip121.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip122.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip123.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip124.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip125.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip13.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip14.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip15.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip16.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip17.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip18.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip2.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip20.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip21.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip22.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip23.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip24.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip25.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip26.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip27.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip28.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip29.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip3.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip30.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip31.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip32.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip33.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip34.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip35.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip36.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip37.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip38.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip39.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip4.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip40.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip41.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip42.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip43.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip44.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip45.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip46.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip47.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip48.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip49.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip5.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip50.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip51.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip52.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip53.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip54.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip55.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip56.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip57.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip58.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip59.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip6.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip60.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip61.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip62.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip63.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip65.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip67.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip68.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip69.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip7.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip70.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip71.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip72.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip73.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip74.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip75.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip76.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip77.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip78.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip79.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip8.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip80.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip81.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip82.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip83.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip84.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip85.vtt" />
+    <None Include="wwwroot\assets\data\templates\clip86.vtt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\js\" />
+    <Folder Include="wwwroot\assets\styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MemeTV.BusinessLogic\MemeTV.BusinessLogic.csproj" />
+    <ProjectReference Include="..\MemeTV.Models\MemeTV.Models.csproj" />
+  </ItemGroup>
+
+</Project>
