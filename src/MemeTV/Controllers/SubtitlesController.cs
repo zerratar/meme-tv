@@ -14,7 +14,9 @@ namespace MemeTV.Controllers
         private readonly ILogger logger;
         private readonly IClipManager clipManager;
 
-        public SubtitlesController(ILogger logger, IClipManager clipManager)
+        public SubtitlesController(
+            ILogger logger,
+            IClipManager clipManager)
         {
             this.logger = logger;
             this.clipManager = clipManager;
@@ -27,9 +29,9 @@ namespace MemeTV.Controllers
         }
 
         [HttpPost]
-        public Task SaveSubtitlesAsync(SaveSubtitleModel model)
-        {
-            return clipManager.StoreAsync(model.Name, model.Email, model.Clip, model.Subtitles);
+        public async Task<object> SaveSubtitlesAsync(SaveSubtitleModel model)
+        {            
+            return new { id = await clipManager.StoreAsync(model.Name, model.Email, model.Clip, model.Subtitles) };
         }
 
         [HttpGet("{id}")]
@@ -38,10 +40,10 @@ namespace MemeTV.Controllers
             return clipManager.GetClipSubtitleAsync(id);
         }
 
-        [HttpGet("vtt/empty")]
-        public IActionResult GetEmptyVtt()
+        [HttpGet("vtt/empty/{clip}")]
+        public async Task<IActionResult> GetEmptyVtt(string clip)
         {
-            var vtt = clipManager.GetEmptyVtt();
+            var vtt = await clipManager.GetEmptyVttAsync(clip);
             var bytes = Encoding.UTF8.GetBytes(vtt);
             return File(bytes, "text/vtt");
         }

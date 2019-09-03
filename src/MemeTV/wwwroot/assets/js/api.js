@@ -4,7 +4,7 @@ export default class MemeTvApi {
     }
 
     static async saveSubtitlesAsync(name, email, clip, subtitles) {
-        return await MemeTvApi.sendAsync('subtitles/save', { name, email, clip, subtitles });
+        return await MemeTvApi.sendAsync('subtitles/', { name, email, clip, subtitles });
     }
 
     static async getClipsAsync() {

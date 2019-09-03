@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.705
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemeTV", "src\MemeTV\MemeTV.csproj", "{7C591E41-EB88-4E30-88A8-A1E26B8F8A70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeTV.BusinessLogic", "src\MemeTV.BusinessLogic\MemeTV.BusinessLogic.csproj", "{3E5509DC-4903-4DF3-936D-E3DDCABB186F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemeTV.BusinessLogic", "src\MemeTV.BusinessLogic\MemeTV.BusinessLogic.csproj", "{3E5509DC-4903-4DF3-936D-E3DDCABB186F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeTV.Models", "src\MemeTV.Models\MemeTV.Models.csproj", "{2C64C293-4042-46CF-AC1E-62EAEDB20836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemeTV.Models", "src\MemeTV.Models\MemeTV.Models.csproj", "{2C64C293-4042-46CF-AC1E-62EAEDB20836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

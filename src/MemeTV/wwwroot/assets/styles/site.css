@@ -157,6 +157,7 @@ img.logo {
     background-color: #0a0a0a;
     padding: 25px;
 }
+
 .subtitle-list input,
 .create-own input {
     padding: 16px 35px;
@@ -169,6 +170,11 @@ img.logo {
     box-sizing: border-box;
     color: white;
 }
+
+.create-own input.validation-error {
+    border-color: #EA2027;
+}
+
 .input-icon {
     position: absolute;
     z-index: 10;
@@ -184,6 +190,19 @@ img.logo {
     margin-left: auto;
     margin-right: auto;
     font-size: 10pt;
+}
+
+.link a {
+    font-size: 26pt;
+    text-decoration: none;
+    color: white;
+    padding: 5px 15px;
+    background-color: #0a0a0a;
+}
+
+.create-result {
+    margin-top: 10px;
+    display: none;
 }
 
 ::-webkit-scrollbar-track

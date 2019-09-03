@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace MemeTV
 {
@@ -25,11 +26,17 @@ namespace MemeTV
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddSingleton<ILogger, ConsoleLogger>();
             services.AddSingleton<IClipManager, ClipManager>();
             services.AddSingleton<IClipProvider, ClipProvider>();
             services.AddSingleton<IVttTemplateRenderer, VttTemplateRenderer>();
             services.AddSingleton<IClipIdentifierProvider, ClipIdentifierProvider>();
+
+            services.AddSingleton<ISqlConnectionProvider, SqlConnectionProvider>();
+            services.AddSingleton<IDbConnectionStringProvider>(re => new DbConnectionStringProvider(re.GetService<IOptions<AppSettings>>().Value));
+
             services.AddSingleton<IHostingEnvironment>(env);
         }
 
