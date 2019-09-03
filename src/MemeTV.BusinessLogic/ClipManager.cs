@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using MemeTV.Models;
 
@@ -53,6 +54,19 @@ namespace MemeTV.BusinessLogic
             var subtitles = await GetAsync(id);
             var clip = clipProvider.Get(subtitles.ClipName);
             return vttRenderer.Render(clip, subtitles.Captions);
+        }
+
+        public string GetEmptyVtt()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("WEBVTT FILE");
+            sb.AppendLine();
+            return sb.ToString();
+        }
+
+        public async Task<ClipHeader[]> GetHeadersAsync()
+        {
+            return clipProvider.GetHeaders();
         }
     }
 }

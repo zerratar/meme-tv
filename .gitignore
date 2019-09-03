@@ -85,6 +85,10 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
+# video files
+*.webm
+*.mp4
+
 # Chutzpah Test files
 _Chutzpah*
 

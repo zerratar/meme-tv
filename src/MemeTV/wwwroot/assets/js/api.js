@@ -7,6 +7,10 @@ export default class MemeTvApi {
         return await MemeTvApi.sendAsync('subtitles/save', { name, email, clip, subtitles });
     }
 
+    static async getClipsAsync() {
+        return await MemeTvApi.sendAsync('subtitles/clips');
+    }
+
     static async sendAsync(method, data = null) {
         const url = MemeTvApi.buildRequestUrl(method);
         if (data !== null) {

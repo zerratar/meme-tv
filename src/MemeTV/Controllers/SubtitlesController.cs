@@ -20,6 +20,12 @@ namespace MemeTV.Controllers
             this.clipManager = clipManager;
         }
 
+        [HttpGet("clips")]
+        public async Task<ClipHeader[]> GetClips()
+        {
+            return await clipManager.GetHeadersAsync();
+        }
+
         [HttpPost]
         public Task SaveSubtitlesAsync(SaveSubtitleModel model)
         {
@@ -30,6 +36,14 @@ namespace MemeTV.Controllers
         public Task<UserClip> GetSubtitlesAsync(string id)
         {
             return clipManager.GetClipSubtitleAsync(id);
+        }
+
+        [HttpGet("vtt/empty")]
+        public IActionResult GetEmptyVtt()
+        {
+            var vtt = clipManager.GetEmptyVtt();
+            var bytes = Encoding.UTF8.GetBytes(vtt);
+            return File(bytes, "text/vtt");
         }
 
         [HttpGet("vtt/{id}")]

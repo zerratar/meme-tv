@@ -5,7 +5,7 @@ namespace MemeTV.Models
 {
     public class Clip
     {
-        public string Name { get; set; }        
+        public string Name { get; set; }
         public string Webm => "/data/clips/webm/" + Name + ".webm";
         public string Mp4 => "/data/clips/mp4/" + Name + ".mp4";
         public string Image => "/data/clips/images/" + Name + ".jpg";

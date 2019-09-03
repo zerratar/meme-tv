@@ -9,5 +9,7 @@ namespace MemeTV.BusinessLogic
         Task StoreAsync(string modelName, string modelEmail, string modelClip, string[] modelSubtitles);
         Task<UserClip> GetClipSubtitleAsync(string id);
         Task<string> GetClipVttAsync(string id);
+        string GetEmptyVtt();
+        Task<ClipHeader[]> GetHeadersAsync();
     }
 }
