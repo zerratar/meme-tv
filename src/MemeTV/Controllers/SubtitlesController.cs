@@ -57,7 +57,7 @@ namespace MemeTV.Controllers
         [HttpPost]
         public async Task<object> SaveSubtitlesAsync(SaveSubtitleModel model)
         {
-            return new { id = await clipManager.StoreAsync(model.Name, model.Email, model.Clip, model.Subtitles) };
+            return new { id = await clipManager.StoreAsync(model.Name, model.Email, model.Title, model.Description, model.Clip, model.Subtitles) };
         }
 
         [HttpGet("{id}")]
@@ -97,6 +97,8 @@ namespace MemeTV.Controllers
     {
         [JsonProperty("name")] public string Name { get; set; }
         [JsonProperty("email")] public string Email { get; set; }
+        [JsonProperty("title")] public string Title { get; set; }
+        [JsonProperty("description")] public string Description { get; set; }
         [JsonProperty("clip")] public string Clip { get; set; }
         [JsonProperty("subtitles")] public string[] Subtitles { get; set; }
     }

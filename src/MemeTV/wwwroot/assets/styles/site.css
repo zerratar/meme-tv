@@ -159,6 +159,8 @@ img.logo {
     padding: 25px;
 }
 
+.details textarea,
+#inputTitle,
 .subtitle-list input,
 .create-own input {
     padding: 16px 35px;
@@ -170,11 +172,17 @@ img.logo {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: white;
+    font-family: 'Fira Sans', sans-serif;
 }
 
     .create-own input.validation-error {
         border-color: #EA2027;
     }
+
+.details {
+    display: flex;
+    flex-flow:column;
+}
 
 .input-icon {
     position: absolute;
@@ -254,7 +262,6 @@ img.logo {
 }
 
 .share-modal {
-    
     position: fixed;
     top: 0;
     left: 0;
@@ -264,7 +271,6 @@ img.logo {
     z-index: 999;
     opacity: 0;
     pointer-events: none;
-    
 }
 
     .share-modal.visible {
@@ -286,6 +292,7 @@ img.logo {
         transform: translate(-50%, -50%);
         z-index: 9999;
     }
+
 .share-url {
     background-color: #1a1a1a;
     padding: 5px 15px;
@@ -323,13 +330,14 @@ img.logo {
         background-color: #4267b2;
     }
 
-    
-    .share-icon.share-facebook:hover {
-        background-color: #3c5fa5;
-    }
-    .share-icon.share-facebook:active {
-        background-color: #375591;
-    }
+
+        .share-icon.share-facebook:hover {
+            background-color: #3c5fa5;
+        }
+
+        .share-icon.share-facebook:active {
+            background-color: #375591;
+        }
 
     .share-icon.share-twitter {
         color: white;
@@ -337,12 +345,13 @@ img.logo {
         background-color: #1da1f2;
     }
 
-    .share-icon.share-twitter:hover {
-        background-color: #1b96e2;
-    }
-    .share-icon.share-twitter:active {
-        background-color: #1986c9;
-    }
+        .share-icon.share-twitter:hover {
+            background-color: #1b96e2;
+        }
+
+        .share-icon.share-twitter:active {
+            background-color: #1986c9;
+        }
 
     .share-icon.share-reddit {
         color: white;
@@ -350,26 +359,30 @@ img.logo {
         background-color: #ff4500;
     }
 
-    .share-icon.share-reddit:hover {
-        background-color: #ec3f00;
-    }
+        .share-icon.share-reddit:hover {
+            background-color: #ec3f00;
+        }
 
-    .share-icon.share-reddit:active {
-        background-color: #d63900;
-    }
+        .share-icon.share-reddit:active {
+            background-color: #d63900;
+        }
 
-    .share-modal.visible .content {
-        width: 485px;
-        height: 170px;
-        max-width: 100%;
-        max-height: 100%;
-        padding: 25px;
-    }
+.share-modal.visible .content {
+    width: 485px;
+    height: 170px;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 25px;
+}
 
 .content .row h4 {
     padding: 0;
     margin: 0;
     color: white;
+}
+
+.parody-description:empty{
+    display:none;
 }
 
 ::-webkit-scrollbar-track {

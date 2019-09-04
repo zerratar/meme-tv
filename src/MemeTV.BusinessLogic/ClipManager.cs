@@ -60,7 +60,7 @@ namespace MemeTV.BusinessLogic
                 try
                 {
                     var cmd = db.CreateCommand();
-                    cmd.CommandText = "SELECT Id, Name, Email, ClipName, Captions, Created FROM [Subtitles] WHERE Id = @Id";
+                    cmd.CommandText = "SELECT Id, Name, Email, Title, Description, ClipName, Captions, Created FROM [Subtitles] WHERE Id = @Id";
                     AddParameter(cmd, "Id", id);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
@@ -72,6 +72,10 @@ namespace MemeTV.BusinessLogic
                         var name = reader.GetString(reader.GetOrdinal("Name"));
                         var email = reader.GetString(reader.GetOrdinal("Email"));
                         var clipName = reader.GetString(reader.GetOrdinal("ClipName"));
+
+                        var title = reader.GetValue(reader.GetOrdinal("Title"));
+                        var description = reader.GetValue(reader.GetOrdinal("Description"));
+
                         var captions = JsonConvert.DeserializeObject<List<string>>(reader.GetString(reader.GetOrdinal("Captions")));
                         var created = reader.GetDateTime(reader.GetOrdinal("Created"));
                         return new Subtitles
@@ -81,6 +85,8 @@ namespace MemeTV.BusinessLogic
                             Created = created,
                             Email = email,
                             Name = name,
+                            Title = title?.ToString(),
+                            Description = description?.ToString(),
                             Captions = captions
                         };
                     }
@@ -96,13 +102,15 @@ namespace MemeTV.BusinessLogic
             }
         }
 
-        public async Task<string> StoreAsync(string name, string email, string clip, string[] modelSubtitles)
+        public async Task<string> StoreAsync(string name, string email, string title, string description, string clip, string[] modelSubtitles)
         {
             var sub = new Subtitles
             {
                 Id = idProvider.Get(),
                 Email = email,
                 Name = name,
+                Title = title,
+                Description = description,
                 Created = DateTime.UtcNow,
                 ClipName = clip,
                 Captions = modelSubtitles.ToList()
@@ -113,12 +121,14 @@ namespace MemeTV.BusinessLogic
                 await db.OpenAsync();
 
                 var cmd = db.CreateCommand();
-                cmd.CommandText = "insert into [Subtitles] (Id, Name, Email, ClipName, Captions, Created) VALUES (@Id, @Name, @Email, @ClipName, @Captions, @Created)";
+                cmd.CommandText = "insert into [Subtitles] (Id, Name, Email, Title, Description, ClipName, Captions, Created) VALUES (@Id, @Name, @Email, @Title, @Description, @ClipName, @Captions, @Created)";
 
                 AddParameter(cmd, "Id", sub.Id);
                 AddParameter(cmd, "Name", sub.Name);
                 AddParameter(cmd, "Email", sub.Email);
                 AddParameter(cmd, "ClipName", sub.ClipName);
+                AddParameter(cmd, "Title", sub.Title);
+                AddParameter(cmd, "Description", sub.Description);
                 AddParameter(cmd, "Captions", JsonConvert.SerializeObject(sub.Captions));
                 AddParameter(cmd, "Created", sub.Created);
 
@@ -144,6 +154,8 @@ namespace MemeTV.BusinessLogic
                 //Email = subtitles.Email,
                 Name = subtitles.Name,
                 Created = subtitles.Created,
+                Title = subtitles.Title,
+                Description = subtitles.Description,
                 Likes = socialData.Likes,
                 Views = socialData.Views,
                 VTT = "/api/subtitles/vtt/" + id,

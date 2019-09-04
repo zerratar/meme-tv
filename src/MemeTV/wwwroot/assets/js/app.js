@@ -14,6 +14,7 @@ const loadUserParodyVideo = async (id) => {
     const shareModal = document.querySelector('.share-modal');
     const btnLike = document.querySelector('.like');
     const btnShare = document.querySelector('.share');
+    const parodyTitle = document.querySelector('.parody-title');
 
     const subtitles = await MemeTvApi.getSubtitlesAsync(id);
     const data = await subtitles.json();
@@ -27,7 +28,9 @@ const loadUserParodyVideo = async (id) => {
 
     viewsCount.innerHTML = data.views + '';
     likeCount.innerHTML = data.likes + '';
-
+    if (data.title !== null && data.title.length > 0)
+        parodyTitle.innerText = data.title + ' - ';
+    document.querySelector('.parody-description').innerHTML = data.description;
     document.querySelector('.share-facebook').onclick = () => {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURI(window.location.href)}`);
     };
@@ -37,8 +40,7 @@ const loadUserParodyVideo = async (id) => {
     document.querySelector('.share-reddit').onclick = () => {
         window.open(`http://www.reddit.com/submit?url=${encodeURI(window.location.href)}&title=${encodeURI('A parody by ' + data.name)}`);
     };
-    document.querySelector('.share-modal .content').onclick = ev =>
-    {
+    document.querySelector('.share-modal .content').onclick = ev => {
         ev.stopPropagation();
         ev.preventDefault();
         event.cancelBubble = true;
@@ -59,7 +61,7 @@ const loadUserParodyVideo = async (id) => {
         const likeResult = await result.json();
         btnLike.classList.remove('liked');
         if (likeResult.liked) {
-            btnLike.classList.add('liked');            
+            btnLike.classList.add('liked');
         }
         likeCount.innerHTML = likeResult.likes + '';
     };
@@ -181,16 +183,19 @@ const loadParodyVideoEditor = async () => {
             const name = inputName.value;
             const email = inputEmail.value;
 
+            const title = document.getElementById("inputTitle").value;
+            const description = document.getElementById("inputDescription").value;
+
             inputName.classList.remove('validation-error');
             inputEmail.classList.remove('validation-error');
 
             const isEmailValid = isValidEmail(email);
-            if (name.length == 0 || !isEmailValid) {
-                showValidationError(name.length == 0, !isEmailValid);
+            if (name.length === 0 || !isEmailValid) {
+                showValidationError(name.length === 0, !isEmailValid);
                 return;
             }
 
-            const response = await MemeTvApi.saveSubtitlesAsync(name, email, `clip${clip.name}`, captions);
+            const response = await MemeTvApi.saveSubtitlesAsync(name, email, title, description, `clip${clip.name}`, captions);
             if (response.ok) {
                 const result = await response.json();
                 showSaveResult(result);

@@ -5,6 +5,8 @@ namespace MemeTV.Models
     public class UserClip
     {
         public string Name { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public string ClipName { get; set; }
         public long Views { get; set; }
         public long Likes { get; set; }
