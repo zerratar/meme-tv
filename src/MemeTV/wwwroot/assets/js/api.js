@@ -11,6 +11,14 @@ export default class MemeTvApi {
         return await MemeTvApi.sendAsync('subtitles/clips');
     }
 
+    static async reportBadCaptionsAsync(clip) {
+        return await MemeTvApi.sendAsync('subtitles/report/' + clip);
+    }
+
+    static async likeAsync(clip) {
+        return await MemeTvApi.sendAsync('subtitles/like/' + clip);
+    }
+
     static async sendAsync(method, data = null) {
         const url = MemeTvApi.buildRequestUrl(method);
         if (data !== null) {

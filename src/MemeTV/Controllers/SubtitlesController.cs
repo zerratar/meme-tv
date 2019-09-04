@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MemeTV.BusinessLogic;
 using MemeTV.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -22,6 +23,31 @@ namespace MemeTV.Controllers
             this.clipManager = clipManager;
         }
 
+        [HttpGet("like/{id}")]
+        public async Task<object> LikeAsync(string id)
+        {
+            // since we don't have a login
+            // we cant stop people from spamming like
+            var liked = HttpContext.Session.GetInt32("like_" + id) == 1;
+            try
+            {
+                var newValue = !liked;
+                var likeCount = await clipManager.UpdateLikesAsync(id, newValue);
+                HttpContext.Session.SetInt32("like_" + id, newValue ? 1 : 0);
+                return new { liked = newValue, likes = likeCount };
+            }
+            finally
+            {
+                await HttpContext.Session.CommitAsync();
+            }
+        }
+
+        [HttpGet("report/{clip}")]
+        public Task ReportBadClipAsync(string clip)
+        {
+            return clipManager.ReportBadCaptionsAsync(clip);
+        }
+
         [HttpGet("clips")]
         public async Task<ClipHeader[]> GetClips()
         {
@@ -30,14 +56,24 @@ namespace MemeTV.Controllers
 
         [HttpPost]
         public async Task<object> SaveSubtitlesAsync(SaveSubtitleModel model)
-        {            
+        {
             return new { id = await clipManager.StoreAsync(model.Name, model.Email, model.Clip, model.Subtitles) };
         }
 
         [HttpGet("{id}")]
-        public Task<UserClip> GetSubtitlesAsync(string id)
+        public async Task<UserClip> GetSubtitlesAsync(string id)
         {
-            return clipManager.GetClipSubtitleAsync(id);
+            var viewed = HttpContext.Session.GetInt32("view_" + id) == 1;
+            if (!viewed)
+            {
+                HttpContext.Session.SetInt32("view_" + id, 1);
+                await HttpContext.Session.CommitAsync();
+            }
+
+            var clip = await clipManager.GetClipSubtitleAsync(id, !viewed);
+            var liked = HttpContext.Session.GetInt32("like_" + id) == 1;
+            clip.Liked = liked;
+            return clip;
         }
 
         [HttpGet("vtt/empty/{clip}")]

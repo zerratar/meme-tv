@@ -30,6 +30,7 @@ namespace MemeTV.BusinessLogic
 
         public Clip Get(string name)
         {
+            if (name.IndexOf("clip", StringComparison.OrdinalIgnoreCase) < 0) name = "clip" + name;
             return this.clips.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 

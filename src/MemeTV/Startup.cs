@@ -25,6 +25,15 @@ namespace MemeTV
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -43,8 +52,6 @@ namespace MemeTV
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var viewContent = System.IO.File.ReadAllText(System.IO.Path.Combine(env.WebRootPath, "view", "index.html"));
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -55,6 +62,7 @@ namespace MemeTV
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.MapWhen(ctx =>
             {
                 var identifierProvider = app.ApplicationServices.GetService<IClipIdentifierProvider>();
@@ -66,6 +74,7 @@ namespace MemeTV
             {
                 builder.Run(async ctx =>
                 {
+                    var viewContent = System.IO.File.ReadAllText(System.IO.Path.Combine(env.WebRootPath, "view", "index.html"));
                     await ctx.Response.WriteAsync(
                         string.Format(viewContent, "<script>var id = '" + ctx.Request.Path.Value.Replace("/", "") + "';</script>"));
                 });
